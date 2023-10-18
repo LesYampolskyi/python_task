@@ -12,7 +12,9 @@ import base64
 class TaskPipeline:
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
-        adapter["ip_address"] = base64.b64decode(adapter.get("ip_address")).decode("utf-8")
+        adapter["ip_address"] = base64.b64decode(adapter.get("ip_address")).decode(
+            "utf-8"
+        )
         adapter["port"] = int(adapter.get("port"))
 
         return item
